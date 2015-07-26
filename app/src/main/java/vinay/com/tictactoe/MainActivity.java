@@ -68,10 +68,11 @@ public class MainActivity extends ActionBarActivity {
                         player = "0";
                     else
                         player = "X";
-                    if (!won)
+                    if (!won) {
                         tv.setText(player + " Turn");
-                    if (buttonsClickOP.size() + buttonsClickXP.size() == 9)
-                        tv.setText("Tie!");
+                        if (buttonsClickOP.size() + buttonsClickXP.size() == 9)
+                            tv.setText("Tie!");
+                    }
                 }
             });
         }
