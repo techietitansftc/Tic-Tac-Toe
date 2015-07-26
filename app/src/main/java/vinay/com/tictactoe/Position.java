@@ -1,11 +1,9 @@
 package vinay.com.tictactoe;
 
-import android.widget.Button;
-
 /**
  * Created by vinayjagan on 7/26/15.
  */
-public class Position{
+public class Position {
 
     public int x;
     public int y;
@@ -15,6 +13,10 @@ public class Position{
         this.y = y;
     }
 
+    @Override
+    public String toString() {
+        return x + ", " + y;
+    }
 
 
 }

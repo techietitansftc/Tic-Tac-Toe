@@ -39,7 +39,6 @@ public class MainActivity extends ActionBarActivity {
             buttonCoord.button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.d("Activity", buttonCoord.position.x + ", " + buttonCoord.position.y);
                     buttonCoord.button.setText(player);
                     buttonCoord.button.setEnabled(false);
                     if (player == "X") {
@@ -70,8 +69,9 @@ public class MainActivity extends ActionBarActivity {
                         player = "X";
                     if (!won) {
                         tv.setText(player + " Turn");
-                        if (buttonsClickOP.size() + buttonsClickXP.size() == 9)
+                        if (buttonsClickOP.size() + buttonsClickXP.size() == 9) {
                             tv.setText("Tie!");
+                        }
                     }
                 }
             });
@@ -144,28 +144,19 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private boolean isDiagonal(ArrayList<ButtonCoord> buttonCoords, ButtonCoord bc) {
-        int count = 0;
-        for (int i = 0; i < buttonCoords.size(); i++) {
-            ButtonCoord other = buttonCoords.get(i);
-            boolean same = other.position == bc.position;
-            boolean middle = ((other.position.x == bc.position.x + 1 && other.position.y == bc.position.y + 1)
-                    && (other.position.x + 1 == bc.position.x && other.position.y == bc.position.y + 1))
-                    || ((other.position.x + 1 == bc.position.x && other.position.y + 1 == bc.position.y)
-                    && (other.position.x == bc.position.x + 1 && other.position.y + 1 == bc.position.y));
-            boolean topRight = (other.position.x + 1 == bc.position.x && other.position.y + 1 == bc.position.y)
-                    || (other.position.x + 2 == bc.position.x && other.position.y + 2 == bc.position.y);
-            boolean topLeft = (other.position.x - 1 == bc.position.x && other.position.y - 1 == bc.position.y)
-                    || (other.position.x - 2 == bc.position.x && other.position.y - 2 == bc.position.y);
-            boolean bottomLeft = (other.position.x == bc.position.x + 1 && other.position.y == bc.position.y + 1)
-                    || (other.position.x == bc.position.x + 2 && other.position.y == bc.position.y + 2);
-            boolean bottomRight = (other.position.x + 1 == bc.position.x && other.position.y == bc.position.y + 1)
-                    || (other.position.x + 2 == bc.position.x && other.position.y == bc.position.y + 2);
-            if (same || middle || topRight || topLeft || bottomLeft || bottomRight) count++;
-        }
-        if (count == 3)
+
+        Button b = (Button) findViewById(R.id.button3);
+        Button b2 = (Button) findViewById(R.id.button5);
+        Button b3 = (Button) findViewById(R.id.button7);
+        if (b.getText().toString() == player && b2.getText().toString() == player && b3.getText().toString() == player)
             return true;
-        else
-            return false;
+        Button b4 = (Button) findViewById(R.id.button);
+        Button b5 = (Button) findViewById(R.id.button5);
+        Button b6 = (Button) findViewById(R.id.button9);
+        if (b4.getText().toString() == player && b5.getText().toString() == player && b6.getText().toString() == player)
+            return true;
+
+        return false;
     }
 
 }
